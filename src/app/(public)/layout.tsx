@@ -1,4 +1,6 @@
 
+import Footer from '@/components/shared/Footer';
+import Navbar from '@/components/shared/Navbar';
 import React from 'react';
 
 interface IProps {
@@ -8,11 +10,11 @@ interface IProps {
 const HomeLayout = ({ children }: IProps) => {
     return (
         <div>
-            <h1>This is navbar</h1>
+            <Navbar />
             <div className='min-h-dvh'>
                 {children}
             </div>
-            <h1>This is footer</h1>
+            <Footer />
         </div>
     );
 };

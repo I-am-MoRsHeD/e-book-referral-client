@@ -1,9 +1,10 @@
+import Hero from '@/components/modules/Home/Hero';
 import React from 'react';
 
 const PublicPage = () => {
     return (
         <div>
-            This is public page
+            <Hero />
         </div>
     );
 };
