@@ -34,11 +34,17 @@ const Navbar = () => {
                 </div>
                 <div>
                     <Link
+                        href="/login"
+                        className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
+                    >
+                        Sign In
+                    </Link>
+                    {/* <Link
                         href="/dashboard"
                         className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
                     >
                         Dashboard
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>
