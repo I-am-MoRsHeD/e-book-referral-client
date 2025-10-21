@@ -13,7 +13,7 @@ const LoginPage = () => {
     return (
         <div>
             <div className="grid min-h-svh lg:grid-cols-2">
-                <div className="relative hidden lg:block bg-red-600">
+                <div className="relative hidden lg:block">
                     <Image
                         src="/book1.webp"
                         alt="Background"

@@ -3,6 +3,8 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { login } from '@/actions/auth';
+import { toast } from 'sonner';
 
 interface LoginInputs {
     email: string;
@@ -19,14 +21,16 @@ const LoginForm = () => {
     } = useForm<LoginInputs>();
 
     const onSubmit: SubmitHandler<LoginInputs> = async (data) => {
-
+        const toastId = toast.loading('Please wait....');
         try {
-            console.log(data);
-            // const res = await login(data);
+            const res = await login(data);
 
-            // if (res?.statusCode === 200) {
-            //     router.push('/');
-            // }
+            if (res?.success) {
+                toast.success(res?.message, { id: toastId });
+                router.push('/');
+            } else {
+                toast.error(res?.message, { id: toastId });
+            }
         } catch (error) {
             console.log(error);
         }

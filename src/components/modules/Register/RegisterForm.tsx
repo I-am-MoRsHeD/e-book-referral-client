@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { registerAction } from '@/actions/auth';
+import { toast } from 'sonner';
 
 interface RegisterInputs {
     name: string;
@@ -20,15 +23,16 @@ const RegisterForm = () => {
     } = useForm<RegisterInputs>();
 
     const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
-
+        const toastId = toast.loading('Please wait....');
         try {
-            console.log(data);
-            // const res = await login(data);
-
-            // if (res?.statusCode === 200) {
-            //     router.push('/');
-            // }
-        } catch (error) {
+            const res = await registerAction(data);
+            if (res?.success) {
+                toast.success(res?.message, { id: toastId });
+                router.push('/login');
+            } else {
+                toast.error(res?.message, { id: toastId });
+            }
+        } catch (error: any) {
             console.log(error);
         }
     };
