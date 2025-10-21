@@ -1,10 +1,12 @@
 'use client';
+import { useUser } from '@/hooks/useUser';
 import { navigationLinks } from '@/static/navbarInfo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const pathname = usePathname();
+    const { user, setUser, loading } = useUser();
 
     return (
         <div className='container mx-auto rounded-md px-2 bg-gray-200'>
@@ -33,18 +35,24 @@ const Navbar = () => {
                     })}
                 </div>
                 <div>
-                    <Link
-                        href="/login"
-                        className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
-                    >
-                        Sign In
-                    </Link>
-                    {/* <Link
-                        href="/dashboard"
-                        className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
-                    >
-                        Dashboard
-                    </Link> */}
+                    {
+                        loading ? (
+                            <span>
+                                Loading...
+                            </span>
+                        ) : user?.email ? (<Link
+                            href="/dashboard"
+                            className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
+                        >
+                            Dashboard
+                        </Link>) : (
+                            <Link
+                                href="/login"
+                                className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
+                            >
+                                Sign In
+                            </Link>)
+                    }
                 </div>
             </div>
         </div>
