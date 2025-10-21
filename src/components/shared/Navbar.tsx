@@ -7,7 +7,7 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <div className='container mx-auto sticky top-1 z-50 bg-muted rounded-md px-2 bg-gray-200'>
+        <div className='container mx-auto rounded-md px-2 bg-gray-200'>
             <div className='flex flex-row justify-between items-center h-14'>
                 <Link href="/">
                     <h1 className="text-xl font-bold italic">BestBoBuy</h1>
