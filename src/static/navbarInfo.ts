@@ -10,7 +10,11 @@ export const navigationLinks = [
 
 export const dashboardNavInfo = [
     {
-        title: "Overview",
-        url: "/dashboard",
+        label: "Home",
+        href: '/'
+    },
+    {
+        label: "Overview",
+        href: "/dashboard",
     }
 ];

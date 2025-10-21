@@ -33,7 +33,12 @@ const Navbar = () => {
                     })}
                 </div>
                 <div>
-                    <button>Sign In</button>
+                    <Link
+                        href="/dashboard"
+                        className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
+                    >
+                        Dashboard
+                    </Link>
                 </div>
             </div>
         </div>

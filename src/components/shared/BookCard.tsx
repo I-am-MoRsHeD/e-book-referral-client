@@ -22,7 +22,7 @@ const BookCard = ({ book, onBuy }: { book: IBook, onBuy?: () => void; }) => {
 
                 <button
                     onClick={onBuy}
-                    className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition-colors"
+                    className="mt-3 w-full bg-orange-700 hover:bg-orange-600 text-white py-2 rounded-lg font-medium transition-colors"
                 >
                     Buy Now
                 </button>
