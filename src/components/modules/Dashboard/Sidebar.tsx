@@ -3,19 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { dashboardNavInfo } from "@/static/navbarInfo";
-import { redirect, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { logOut } from "@/actions/auth";
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const router = useRouter();
+
     const logout = async () => {
         const toastId = toast.loading('Logging out...');
         try {
             const res = await logOut();
             if (res?.success) {
                 toast.success(res?.message, { id: toastId });
-                redirect('/');
+                router.push('/');
             }
         } catch (error: any) {
             toast.error(error?.response?.message || 'Something went wrong!', { id: toastId });
