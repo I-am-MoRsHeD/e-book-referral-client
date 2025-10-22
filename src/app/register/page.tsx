@@ -9,7 +9,9 @@ export const metadata: Metadata = {
     description: 'Create your first step to register'
 }
 
-const RegisterPage = () => {
+const RegisterPage = ({ searchParams }: { searchParams: { r?: string } }) => {
+    const referralCode = searchParams?.r || null;
+
     return (
         <div>
             <div className="grid min-h-svh lg:grid-cols-2">
@@ -21,7 +23,7 @@ const RegisterPage = () => {
                     </div>
                     <div className="flex flex-1 items-center justify-center">
                         <div className="w-full max-w-md">
-                            <RegisterForm />
+                            <RegisterForm referralCode={referralCode} />
                         </div>
                     </div>
                 </div>
