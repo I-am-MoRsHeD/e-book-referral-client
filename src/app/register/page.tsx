@@ -25,7 +25,7 @@ const RegisterPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative hidden lg:block bg-red-600">
+                <div className="relative hidden lg:block">
                     <Image
                         src="/book1.webp"
                         alt="Background"

@@ -1,5 +1,6 @@
 'use server';
 
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 interface PurchasePayload {
@@ -22,6 +23,11 @@ export const purchaseAction = async (payload: PurchasePayload) => {
         });
 
         const result = await res.json();
+
+        if (result.success) {
+            revalidateTag("PURCHASED");
+        };
+
         return result;
     } catch (error) {
         console.error(error);

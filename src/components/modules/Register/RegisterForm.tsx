@@ -2,7 +2,7 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { registerAction } from '@/actions/auth';
 import { toast } from 'sonner';
@@ -14,6 +14,8 @@ interface RegisterInputs {
 }
 
 const RegisterForm = () => {
+    const searchParams = useSearchParams();
+    const referralCode = searchParams.get("r") as string;
     const router = useRouter();
 
     const {
@@ -25,7 +27,7 @@ const RegisterForm = () => {
     const onSubmit: SubmitHandler<RegisterInputs> = async (data) => {
         const toastId = toast.loading('Please wait....');
         try {
-            const res = await registerAction(data);
+            const res = await registerAction(data, referralCode);
             if (res?.success) {
                 toast.success(res?.message, { id: toastId });
                 router.push('/login');
