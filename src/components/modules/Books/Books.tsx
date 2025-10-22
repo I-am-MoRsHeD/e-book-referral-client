@@ -1,9 +1,37 @@
+'use client';
+import { purchaseAction } from '@/actions/post';
 import BookCard from '@/components/shared/BookCard';
+import { useUser } from '@/hooks/useUser';
 import { books } from '@/static/bookLists';
 import { IBook } from '@/types';
 import React from 'react';
+import { toast } from 'sonner';
 
 const Books = () => {
+    const { user } = useUser();
+    const handlePurchase = async (book: IBook) => {
+        const toastId = toast.loading('Please wait....');
+
+        if (!user) {
+            toast.error("Please login to purchase...!");
+        }
+
+        try {
+            const payload = {
+                bookName: book?.title,
+                price: Number(book?.price)
+            };
+            const res = await purchaseAction(payload);
+            if (res.success) {
+                toast.success(res?.message, { id: toastId });
+            } else {
+                toast.error(res?.message, { id: toastId });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className='container mx-auto my-10'>
             <div className='flex flex-row justify-center my-5'>
@@ -14,7 +42,7 @@ const Books = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-5 lg:gap-10 justify-items-center overflow-hidden px-4 xl:px-0 w-full'>
                 {
                     books?.map((book: IBook) => (
-                        <BookCard key={book.id} book={book} />
+                        <BookCard key={book.id} book={book} onBuy={handlePurchase} />
                     ))
                 }
             </div>

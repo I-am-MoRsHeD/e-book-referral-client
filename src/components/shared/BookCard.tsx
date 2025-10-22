@@ -3,7 +3,7 @@ import Image from "next/image";
 import { IBook } from "@/types";
 
 
-const BookCard = ({ book, onBuy }: { book: IBook, onBuy?: () => void; }) => {
+const BookCard = ({ book, onBuy }: { book: IBook, onBuy: (value: IBook) => void; }) => {
     return (
         <div className="w-full max-w-full bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-100">
             <div className="relative w-full h-56">
@@ -21,7 +21,7 @@ const BookCard = ({ book, onBuy }: { book: IBook, onBuy?: () => void; }) => {
                 <p className="text-sm text-gray-600">Price: <span className="font-semibold">${book.price}</span></p>
 
                 <button
-                    onClick={onBuy}
+                    onClick={() => onBuy(book)}
                     className="mt-3 w-full bg-orange-700 hover:bg-orange-600 text-white py-2 rounded-lg font-medium transition-colors"
                 >
                     Buy Now
