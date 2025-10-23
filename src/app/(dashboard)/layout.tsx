@@ -1,4 +1,5 @@
 import Sidebar from "@/components/modules/Dashboard/Sidebar";
+import Trigger from "@/components/modules/Dashboard/Trigger";
 import React from "react";
 
 interface IProps {
@@ -8,11 +9,10 @@ interface IProps {
 const DashboardLayout = ({ children }: IProps) => {
     return (
         <div className="min-h-screen flex bg-gray-50">
-            <aside className="w-64 bg-white border-r shadow-sm hidden md:flex flex-col">
-                <Sidebar />
-            </aside>
+            <Sidebar />
 
             <main className="flex-1 p-6 overflow-y-auto">
+                <Trigger />
                 {children}
             </main>
         </div>

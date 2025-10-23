@@ -6,13 +6,13 @@ import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
     const pathname = usePathname();
-    const { user, setUser, loading } = useUser();
+    const { user, loading } = useUser();
 
     return (
         <div className='container mx-auto rounded-md px-2 bg-gray-200'>
             <div className='flex flex-row justify-between items-center h-14'>
                 <Link href="/">
-                    <h1 className="text-xl font-bold italic">BestBoBuy</h1>
+                    <h1 className="text-sm lg:text-xl font-bold italic">BestBoBuy</h1>
                 </Link>
                 <div className="flex flex-row gap-5">
                     {navigationLinks.map((link, index) => {
@@ -48,7 +48,7 @@ const Navbar = () => {
                         </Link>) : (
                             <Link
                                 href="/login"
-                                className="w-full bg-orange-700 hover:bg-orange-600 text-white p-2 rounded-lg font-medium transition-colors"
+                                className="w-full bg-orange-700 hover:bg-orange-600 text-white p-1 lg:p-2 rounded-lg font-medium transition-colors"
                             >
                                 Sign In
                             </Link>)

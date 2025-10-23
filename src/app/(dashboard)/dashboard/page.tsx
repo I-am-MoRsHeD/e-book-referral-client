@@ -14,7 +14,7 @@ const DashboardPage = async () => {
                 </div>
             </div>
             <div className='grid grid-cols-12 gap-4 w-full'>
-                <div className='col-span-12 flex flex-row w-full gap-4'>
+                <div className='col-span-12 flex flex-col sm:flex-row w-full gap-4'>
                     <OverviewCard
                         title='Referred Users'
                         value={data?.totalReferredUsers || 0}
