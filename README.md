@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 E-Book Referral Client
 
-## Getting Started
+This is the **frontend** of the E-Book Referral System — built with **Next.js 15 (App Router)**, **TypeScript**, and **TailwindCSS**.  
+Users can register (with or without a referral), log in, explore books, and earn credits through referrals.
 
-First, run the development server:
+---
+
+## 🚀 Tech Stack
+
+- **Next.js 15 (App Router)**
+- **React Hook Form** for form handling  
+- **Zustand** for global state management  
+- **Sonner** for toast notifications  
+- **Tailwind CSS** for styling  
+- **Lucide React** for icons  
+- **JWT-based Auth** (handled by backend)
+- **Server Actions** for data fetching
+
+
+---
+
+## 🧑‍💻 Getting Started
+
+### 1️⃣ Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/I-am-MoRsHeD/e-book-referral-client.git
+cd e-book-referral-client
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+bun install
+# or
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3️⃣ Setup Environment Variables
 
-## Learn More
+Create a `.env` file in the root directory:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+follow .env.example for setup
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4️⃣ Run the development server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+bun dev
+# or
+npm run dev
+```
 
-## Deploy on Vercel
+The app will run on [http://localhost:3000](http://localhost:3000).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔐 Authentication Flow
+
+- `login()` and `register()` actions communicate with backend APIs.
+- Auth tokens are managed through **cookies**.
+- Referral registration uses `?r=referralCode` query param.
+
+Example referral link:
+```
+http://localhost:3000/register?r=AB1234
+```
+
+---
+
+## 📱 Features
+
+✅ User Registration (with optional referral)  
+✅ Login / Logout  
+✅ Dashboard with credit & referral overview  
+✅ Book purchase system with referral rewards  
+✅ Responsive Sidebar + Layout  
+✅ Copy Referral Link  
+
+---
+
+## 🧾 Scripts
+
+| Command | Description |
+|----------|--------------|
+| `bun dev` | Run development server |
+| `bun build` | Build for production |
+| `bun start` | Start production server |
+| `bun lint` | Run ESLint |
+
+---
+
+## 🧰 Tools & Libraries
+
+| Package | Purpose |
+|----------|----------|
+| `react-hook-form` | Forms handling |
+| `zustand` | State management |
+| `sonner` | Toast notifications |
+| `lucide-react` | Icons |
+| `tailwindcss` | Styling |
+| `next/navigation` | Router hooks |
+| `eslint` | Code linting |
+
+---
+
+## 🧑‍💼 Author
+
+Developed by **Md Morshed**  
+📧 Email: mdmorshed0187@gmail.com  
+🔗 GitHub: [https://github.com/I-am-MoRsHeD](https://github.com/I-am-MoRsHeD)
